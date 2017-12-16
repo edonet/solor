@@ -24,7 +24,7 @@ const
 module.exports = {
     rootDir: app.rootDir,
     roots: [
-        '<rootDir>/ui/',
+        '<rootDir>/lib/',
         app.src
     ],
     testMatch: [

@@ -12,7 +12,7 @@
  * 服务器配置
  *****************************************
  */
-module.exports = ({ dist, stats, devSever = {} }) => ({
+module.exports = ({ dist, stats, devServer = {} }) => ({
     hot: true,
     host: 'localhost',
     port: 10098,
@@ -33,5 +33,5 @@ module.exports = ({ dist, stats, devSever = {} }) => ({
     compress: true,
     inline: true,
     stats,
-    ...devSever
+    ...devServer
 });
