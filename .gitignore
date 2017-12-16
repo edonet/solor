@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# dist file
+dist/
+
+# backup file
+*.bak
+*.bak.*

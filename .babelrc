@@ -1,0 +1,4 @@
+{
+    "compact": "2048kb",
+    "presets": ["react-app"]
+}
