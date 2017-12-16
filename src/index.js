@@ -12,7 +12,35 @@
  * 加载依赖
  *****************************************
  */
-import * as solor from 'solor';
+import React from 'react';
+import render, { AppContainer } from 'solor';
+import App from './app';
 
 
-console.log(solor);
+/**
+ *****************************************
+ * 渲染【App】
+ *****************************************
+ */
+render((
+    <AppContainer><App /></AppContainer>
+), 'app');
+
+
+/**
+ *****************************************
+ * 启用热更新
+ *****************************************
+ */
+if (module.hot) {
+
+    // 接收模块更新
+    module.hot.accept(['solor', './app'], () => {
+        let app = require('./app');
+
+        // 渲染组件
+        render((
+            <AppContainer title="Sigo">{ app.default }</AppContainer>
+        ), 'app');
+    });
+}

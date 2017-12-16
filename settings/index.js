@@ -36,7 +36,9 @@ module.exports = {
     filename: 'js/[name].[chunkhash].js',
     publicPath: './',
     alias: {
-        solor: dir('lib')
+        solor: dir('lib'),
+        selector: dir('lib/selector'),
+        utils: dir('lib/utils')
     },
     stats: {
         colors: true,
