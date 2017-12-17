@@ -20,7 +20,8 @@ const
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     OutputWebpackPlugin = require('./lib/output-webpack-plugin'),
-    base = require('./base.conf');
+    base = require('./base.conf'),
+    polyfill = require.resolve('./polyfill');
 
 
 /**
@@ -28,10 +29,11 @@ const
  * 抛出配置
  *************************************
  */
-module.exports = (settings, devServer) => ({
+module.exports = settings => ({
     ...base(settings),
     entry: {
         app: [
+            polyfill,
             'babel-polyfill',
             'react-hot-loader/patch',
             'webpack-dev-server/client?' + settings.publicPath,
@@ -40,7 +42,6 @@ module.exports = (settings, devServer) => ({
         ]
     },
     devtool: 'inline-source-map',
-    devServer,
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(settings.env)

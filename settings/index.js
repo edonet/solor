@@ -38,7 +38,8 @@ module.exports = {
     alias: {
         solor: dir('lib'),
         selector: dir('lib/selector'),
-        utils: dir('lib/utils')
+        utils: dir('lib/utils'),
+        style: dir('lib/style')
     },
     stats: {
         colors: true,

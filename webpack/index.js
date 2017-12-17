@@ -35,7 +35,7 @@ module.exports = (settings, devServer) => (
 function createServer(settings, devServer) {
     return new Promise((resolve, reject) => {
         let { port, host } = devServer,
-            app = require('./dev.conf')(settings, devServer),
+            app = require('./dev.conf')(settings),
             server = new WebpackDevServer(webpack(app), devServer);
 
 

@@ -13,6 +13,7 @@
  *****************************************
  */
 import React from 'react';
+import { AppLink } from 'solor';
 
 
 /**
@@ -21,5 +22,7 @@ import React from 'react';
  *****************************************
  */
 export default function App() {
-    return <div>@:@</div>;
+    return (
+        <AppLink path="./index">index!!!@!!</AppLink>
+    );
 }
