@@ -16,7 +16,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import selector from 'selector';
 import { updateAppHistory } from '../actions';
-import resolvePath from './resolvePath.js';
+import resolvePath from './resolvePath';
+import matchState from './matchState';
 
 
 /**
@@ -58,6 +59,9 @@ class AppRoute extends Component {
                 return updateAppHistory({ action: 'POP', pathname: history.resolve(step) });
             }
         };
+
+        // 匹配路径
+        history.match = matchState(history);
 
         // 返回历史对象
         return this.props.render(history);
