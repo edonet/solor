@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { dispatch } from 'selector';
 import { updateAppRouter } from './actions';
+import { updateAppMatcher } from './route';
 
 
 /**
@@ -35,7 +36,7 @@ class AppRouter extends Component {
     componentWillReceiveProps(props) {
 
         // 更新路由
-        dispatch(updateAppRouter(props));
+        updateAppMatcher(dispatch(updateAppRouter(props)));
     }
 
     /* 获取上下文路径 */

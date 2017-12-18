@@ -1,7 +1,7 @@
 /**
  *****************************************
  * Created by lifx
- * Created on 2017-12-16 23:25:17
+ * Created on 2017-12-09 17:32:26
  *****************************************
  */
 'use strict';
@@ -12,16 +12,20 @@
  * 加载依赖
  *****************************************
  */
-
-import AppRouter from './index.jsx';
-import { withRouter, resolvePath } from './route';
-import routeConfirmation from './confirmation';
+import React from 'react';
+import AppIcon, { keys } from 'solor/app-icon';
 
 
 /**
  *****************************************
- * 抛出接口
+ * 图标列表
  *****************************************
  */
-export default AppRouter;
-export { withRouter, routeConfirmation, resolvePath };
+export default function Icons() {
+
+    return (
+        <div>
+            { keys().map(name => <AppIcon key={ name } name={ name } />) }
+        </div>
+    );
+}

@@ -23,6 +23,10 @@
 .app-view {
     background: $backgroundColor;
 
+    &.show {
+        z-index: 10;
+    }
+
     &.has-header {
         padding-top: $appHeaderHeight;
     }

@@ -15,9 +15,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import selector from 'selector';
-import { updateAppHistory } from '../actions';
-import resolvePath from './resolvePath';
-import matchState from './matchState';
+import createHistory from './history';
+import { matchState } from './matchState';
 
 
 /**
@@ -30,41 +29,28 @@ class AppRoute extends Component {
     /* 渲染元素 */
     render() {
         let context = this.context.$$pathname,
-            history = { ...this.props.$router, context };
+            history = {
+                ...this.props.$router, ...createHistory(context)
+            };
 
-        // 解析路径
-        history.resolve = resolvePath(context);
 
-        // 跳转路径
-        history.go = (path, { method = 'PUSH' } = {}) => (
-            path && updateAppHistory({ action: 'PUSH', method, pathname: history.resolve(path) })
-        );
-
-        // 跳转路径
-        history.replace = (path, { method = 'REPLACE' } = {}) => (
-            path && updateAppHistory({ action: 'REPLACE', method, pathname: history.resolve(path) })
-        );
-
-        // 回退路径
-        history.goBack = (step = -1) => {
-            let type = typeof step;
-
-            // 按步回退
-            if (type === 'number') {
-                return updateAppHistory({ action: 'POP', step });
-            }
-
-            // 回退到指定路径
-            if (type === 'string') {
-                return updateAppHistory({ action: 'POP', pathname: history.resolve(step) });
-            }
-        };
+        console.log('--> routeWillUpdate:');
 
         // 匹配路径
         history.match = matchState(history);
 
         // 返回历史对象
         return this.props.render(history);
+    }
+
+    /* 组件挂载完成 */
+    componentDidMount() {
+        this.componentDidUpdate();
+    }
+
+    /* 组件更新完成 */
+    componentDidUpdate() {
+        console.log('--> routeDidUpdated:');
     }
 }
 
