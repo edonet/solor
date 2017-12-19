@@ -34,23 +34,11 @@ class AppRoute extends Component {
             };
 
 
-        console.log('--> routeWillUpdate:');
-
         // 匹配路径
         history.match = matchState(history);
 
         // 返回历史对象
         return this.props.render(history);
-    }
-
-    /* 组件挂载完成 */
-    componentDidMount() {
-        this.componentDidUpdate();
-    }
-
-    /* 组件更新完成 */
-    componentDidUpdate() {
-        console.log('--> routeDidUpdated:');
     }
 }
 
